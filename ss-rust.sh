@@ -14,7 +14,7 @@ FOLDER="/etc/shadowsocks-rust"
 FILE="/usr/local/bin/shadowsocks-rust"
 CONF="/etc/shadowsocks-rust/config.json"
 Local="/etc/sysctl.d/local.conf"
-default_port="33333"
+default_port="40086"
 
 Green="\033[32m" && Red="\033[31m" && GreenBG="\033[42;37m" && RedBG="\033[41;37m" && NC="\033[0m" && YellowColor="\033[0;33m"
 Info="${Green}[信息]${NC}"
@@ -121,18 +121,18 @@ Download() {
 	fi
 	echo -e "${Info} 开始下载 Shadowsocks Rust ……"
 	wget --no-check-certificate -N "https://github.com/shadowsocks/shadowsocks-rust/releases/download/v${Ver}/shadowsocks-v${Ver}.${arch}-unknown-linux-gnu.tar.xz"
-	if [[ ! -e "shadowsocks-${Ver}.${arch}-unknown-linux-gnu.tar.xz" ]]; then
+	if [[ ! -e "shadowsocks-v${Ver}.${arch}-unknown-linux-gnu.tar.xz" ]]; then
 		echo -e "${Error} Shadowsocks Rust 下载失败！"
 		return 1 && exit 1
 	else
-		tar -xvf "shadowsocks-${Ver}.${arch}-unknown-linux-gnu.tar.xz"
+		tar -xvf "shadowsocks-v${Ver}.${arch}-unknown-linux-gnu.tar.xz"
 	fi
 	if [[ ! -e "ssserver" ]]; then
 		echo -e "${Error} Shadowsocks Rust 解压失败 !"
 		echo -e "${Error} Shadowsocks Rust 安装失败 !"
 		return 1 && exit 1
 	else
-		rm -rf "shadowsocks-${Ver}.${arch}-unknown-linux-gnu.tar.xz"
+		rm -rf "shadowsocks-v${Ver}.${arch}-unknown-linux-gnu.tar.xz"
 		chmod +x ssserver
 		mv -f ssserver "${FILE}"
 		rm sslocal ssmanager ssservice ssurl
