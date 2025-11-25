@@ -174,17 +174,43 @@ InstallDeps(){
 WriteCfg(){
 	cat > ${CONF}<<-EOF
 {
-    "server": "::",
-    "server_port": ${port},
-    "password": "${password}",
-    "method": "${cipher}",
-    "fast_open": ${tfo},
-    "mode": "tcp_and_udp",
-    "user":"nobody",
-    "timeout":300,
-    "nameserver":"8.8.8.8"
+    "servers": [
+        {
+            "server":"::",
+            "server_port":40088,
+            "password":"lk.1688",
+            "method":"chacha20-ietf-poly1305",
+            "fast_open":true,
+            "mode":"tcp_and_udp",
+            "user":"nobody",
+            "timeout":300,
+            "nameserver":"8.8.8.8"
+        },
+        {
+            "server":"::",
+            "server_port":40086,
+            "password": "lk.1688",
+            "method":"aes-256-gcm",
+            "fast_open":true,
+            "mode": "tcp_and_udp",
+            "user":"nobody",
+            "timeout":300,
+            "nameserver":"8.8.8.8"
+        }
+    ]
 }
 EOF
+#{
+#    "server": "::",
+#    "server_port": ${port},
+#    "password": "${password}",
+#    "method": "${cipher}",
+#    "fast_open": ${tfo},
+#    "mode": "tcp_and_udp",
+#    "user":"nobody",
+#    "timeout":300,
+#    "nameserver":"8.8.8.8"
+#}
 }
 
 ReadCfg(){
