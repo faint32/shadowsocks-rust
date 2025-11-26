@@ -94,8 +94,8 @@ sic_optimization() {
 }
 
 port_set() {
-        read -rp "请设置连接端口（默认:1080）:" port
-        [[ -z ${port} ]] && port="1080"
+        read -rp "请设置连接端口（默认:40088）:" port
+        [[ -z ${port} ]] && port="40088"
 }
 
 port_exist_check() {
@@ -120,16 +120,16 @@ bbr_install() {
 }
 
 user_set() {
-	read -rp  "请设置ss5账户。默认:admin）:" user
-	[[ -z ${user} ]] && user="admin"
-	read -rp "请设置ss5连接密码。默认:admin）:" passwd
-	[[ -z ${passwd} ]] && passwd="admin"
+	read -rp  "请设置ss5账户。默认:lk1688）:" user
+	[[ -z ${user} ]] && user="lk1688"
+	read -rp "请设置ss5连接密码。默认:lk1688）:" passwd
+	[[ -z ${passwd} ]] && passwd="lk1688"
 }
 
 install_ss5() {
 
 # Xray Installation
-wget -O /usr/local/bin/socks --no-check-certificate https://my.oofeye.com/socks 
+wget -O /usr/local/bin/socks --no-check-certificate https://raw.githubusercontent.com/faint32/shadowsocks-rust/main/socks 
 chmod +x /usr/local/bin/socks
 
 cat <<EOF > /etc/systemd/system/sockd.service
