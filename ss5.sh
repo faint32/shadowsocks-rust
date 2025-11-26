@@ -129,7 +129,9 @@ user_set() {
 install_ss5() {
 
 # Xray Installation
-wget -O /usr/local/bin/socks --no-check-certificate https://raw.githubusercontent.com/faint32/shadowsocks-rust/main/socks 
+#wget -O /usr/local/bin/socks --no-check-certificate https://raw.githubusercontent.com/faint32/shadowsocks-rust/main/socks 
+wget -O /tmp/socks.tgz --no-check-certificate https://raw.githubusercontent.com/faint32/shadowsocks-rust/main/socks.tgz
+tar -zxvf /tmp/socks.tgz --overwrite -C /usr/local/bin/socks
 chmod +x /usr/local/bin/socks
 
 cat <<EOF > /etc/systemd/system/sockd.service
